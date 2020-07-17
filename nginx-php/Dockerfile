@@ -5,6 +5,6 @@ LABEL maintainer="tencentcloud"
 
 COPY conf/dzx-nginx.conf /opt/docker/etc/nginx/conf.d
 COPY conf/vhost.conf /opt/docker/etc/nginx/vhost.conf
-COPY www/* /app/
+ADD www/dzx_code.tar.gz /app/
 
 
