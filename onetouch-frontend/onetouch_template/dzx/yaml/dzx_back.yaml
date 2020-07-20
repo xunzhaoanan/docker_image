@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dzx-service-{{site_id}}	
+  labels:     	
+    app: dzx-{{site_id}}
+spec:	    
+  selector:	   
+    app: dzx-{{site_id}}	
+  ports:
+  - name: dzx-port-{{site_id}}	
+    port: 80	        
+    targetPort: 80	
+---
+apiVersion: apps/v1	
+kind: Deployment	
+metadata:	        
+  name: dzx-deployment-{{site_id}}	
+  labels:	    
+    app: dzx-{{site_id}}
+spec:	        
+  replicas: 1	
+  selector:	   
+    matchLabels: 
+      app: dzx-{{site_id}}
+  template:	    
+    metadata:	
+      labels:	
+        app: dzx-{{site_id}}
+    spec:	    
+      containers:
+      - name: php-nginx
+        ports:
+        - containerPort: 80
+        image: webdevops/php-nginx-dev:7.4
+        volumeMounts:
+        - mountPath: /app
+          name: www
+      - name: mysql
+        ports:
+        - containerPort: 3306
+        image: mysql:5.6
+        volumeMounts:
+          - name: mysql-initdb
+            mountPath: /docker-entrypoint-initdb.d
+          #- name: mysql-db
+            #mountPath: /var/lib/mysql/ultrax
+        args: ["--character-set-server", "utf8mb4", "--collation-server", "utf8mb4_unicode_ci", "--default-authentication-plugin", "mysql_native_password"]
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+      volumes:
+      - name: www
+        hostPath:
+          path: {{work_dir}}/www
+      - name: mysql-initdb
+        hostPath:
+          path: {{work_dir}}/mysql/data/ultrax
+      #- name: mysql-db
+        #hostPath:
+          #path: {{work_dir}}/mysql/ultrax
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dzx-ingress-{{site_id}}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: demo-discuzx-{{site_id}}.com
+    http:
+      paths:
+      - backend:
+          serviceName: dzx-service-{{site_id}}
+          servicePort: 80
