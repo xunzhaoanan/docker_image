@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: qcloud 
-    kubernetes.io/ingress.existLbId: lb-rcbkj9d8
+    kubernetes.io/ingress.existLbId: lb-2o93xg4m
     kubernetes.io/ingress.http-rules: '[{"host":"frontend.onetouch.com","path":"/","backend":{"serviceName":"touch-frontend-service","servicePort":"80"}}]'
   name: onetouch-ingress
   namespace: default
