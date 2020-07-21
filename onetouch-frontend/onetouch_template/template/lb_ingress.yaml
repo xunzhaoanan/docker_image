@@ -4,15 +4,15 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: qcloud 
     kubernetes.io/ingress.existLbId: lb-rcbkj9d8
-    kubernetes.io/ingress.http-rules: '[{"host":"default.onetouch.com","path":"/","backend":{"serviceName":"dzx-service-default","servicePort":"80"}}]'
+    kubernetes.io/ingress.http-rules: '[{"host":"frontend.onetouch.com","path":"/","backend":{"serviceName":"touch-frontend-service","servicePort":"80"}}]'
   name: onetouch-ingress
   namespace: default
 spec:
   rules:
-  - host: default.onetouch.com
+  - host: frontend.onetouch.com
     http:
       paths:
       - backend:
-          serviceName: dzx-service-default
+          serviceName: touch-frontend-service
           servicePort: 80
         path: /
