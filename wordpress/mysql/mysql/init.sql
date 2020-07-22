@@ -125,8 +125,8 @@ LOCK TABLES `wp_options` WRITE;
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`)
 VALUES
-	(1,'siteurl','http://wordpress.dev.com','yes'),
-	(2,'home','http://wordpress.dev.com','yes'),
+	(1,'siteurl','/','yes'),
+	(2,'home','/','yes'),
 	(3,'blogname','demo','yes'),
 	(4,'blogdescription','又一个WordPress站点','yes'),
 	(5,'users_can_register','0','yes'),
