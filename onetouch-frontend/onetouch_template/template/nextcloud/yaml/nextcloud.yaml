@@ -36,7 +36,7 @@ spec:
       - name: php-nginx
         ports:
         - containerPort: 80
-        image: ccr.ccs.tencentyun.com/learnspaces/nextcloud-nginx-php:v2.0
+        image: ccr.ccs.tencentyun.com/learnspaces/nextcloud-nginx-php:v1.0
       - name: mysql
         ports:
         - containerPort: 3306
