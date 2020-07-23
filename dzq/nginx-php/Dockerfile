@@ -11,7 +11,6 @@ ADD run.sh /
 RUN chmod 775 /run.sh
 RUN chown -R www-data /app/*
 RUN chgrp -R www-data /app/*
-RUN chmod -R 777 /app/data
 
 #ENTRYPOINT ["sh","/run.sh"]
 
