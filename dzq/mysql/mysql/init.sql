@@ -821,7 +821,7 @@ CREATE TABLE `dzqreports` (
 DROP TABLE IF EXISTS `dzqsession_tokens`;
 
 CREATE TABLE `dzqsession_tokens` (
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'token',
+  `token` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'token',
   `scope` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '作用域',
   `payload` text COLLATE utf8mb4_unicode_ci COMMENT '负载',
   `user_id` int(10) unsigned DEFAULT NULL COMMENT '用户 id',
