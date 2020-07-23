@@ -300,7 +300,7 @@ DROP TABLE IF EXISTS `dzqgroup_permission`;
 CREATE TABLE `dzqgroup_permission` (
   `group_id` bigint(20) unsigned NOT NULL COMMENT '用户组 id',
   `permission` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '权限名称',
-  PRIMARY KEY (`group_id`,`permission`)
+  PRIMARY KEY (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 LOCK TABLES `dzqgroup_permission` WRITE;
